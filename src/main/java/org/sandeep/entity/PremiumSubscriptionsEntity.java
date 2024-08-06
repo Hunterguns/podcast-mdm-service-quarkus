@@ -4,11 +4,19 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "premium_subscriptions")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 public class PremiumSubscriptionsEntity extends AuditEntity{
     @Id
     @Column(name = "id")
