@@ -16,8 +16,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
-public class PodcastsEntity extends AuditEntity{
+
+public class PodcastsEntity extends AuditEntity {
     @Id
     @Column(name = "id")
     public UUID id;

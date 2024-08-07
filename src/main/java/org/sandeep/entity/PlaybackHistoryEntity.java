@@ -17,7 +17,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+
 public class PlaybackHistoryEntity {
     @Id
     @Column(name = "id")

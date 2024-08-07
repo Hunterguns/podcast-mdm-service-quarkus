@@ -17,7 +17,6 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
 public class PodcastCategoriesEntity {
     @Column(name = "category_id")
     public UUID categoryId;

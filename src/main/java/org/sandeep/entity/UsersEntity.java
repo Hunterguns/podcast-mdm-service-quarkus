@@ -1,6 +1,5 @@
 package org.sandeep.entity;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,8 +13,8 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
-public class UsersEntity extends AuditEntity{
+
+public class UsersEntity extends AuditEntity {
     @Id
     @Column(name = "id")
     public UUID id;

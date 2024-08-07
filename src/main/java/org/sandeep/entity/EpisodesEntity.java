@@ -18,7 +18,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+
 public class EpisodesEntity {
     @Id
     @Column(name = "id")

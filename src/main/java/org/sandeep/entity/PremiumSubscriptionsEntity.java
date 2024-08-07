@@ -16,8 +16,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
-public class PremiumSubscriptionsEntity extends AuditEntity{
+public class PremiumSubscriptionsEntity extends AuditEntity {
     @Id
     @Column(name = "id")
     public String id;
