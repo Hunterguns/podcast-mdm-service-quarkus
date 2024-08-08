@@ -1,20 +1,22 @@
-package org.sandeep.entity;
+package org.sandeep.core.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UsersEntity extends AuditEntity {
+public class UserEntity extends PanacheEntity{
     @Id
     @Column(name = "id")
     public UUID id;

@@ -1,8 +1,6 @@
 package org.sandeep.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.quarkus.arc.All;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UsersRequest {
+public class UserRequest {
     public UUID id;
     public String username;
     public String email;
