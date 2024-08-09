@@ -16,6 +16,6 @@ public class UserRequest {
     public String username;
     public String email;
     public String userType;
-    public String externalId;
     public String password;
+    public String confirmPassword;
 }

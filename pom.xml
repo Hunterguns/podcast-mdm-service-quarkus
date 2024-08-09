@@ -58,6 +58,13 @@
 <!--            <groupId>io.quarkus</groupId>-->
 <!--            <artifactId>quarkus-elytron-security-oauth2</artifactId>-->
 <!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.2.1-jre</version>
+        </dependency>
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-jsonb</artifactId>
