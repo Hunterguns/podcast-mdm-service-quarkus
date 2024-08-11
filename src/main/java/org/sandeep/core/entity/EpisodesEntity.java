@@ -1,4 +1,4 @@
-package org.sandeep.entity;
+package org.sandeep.core.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +18,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+
 public class EpisodesEntity {
     @Id
     @Column(name = "id")

@@ -1,4 +1,4 @@
-package org.sandeep.entity;
+package org.sandeep.core.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,20 +12,17 @@ import lombok.experimental.SuperBuilder;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ratings")
+@Table(name = "categories")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
-public class RatingsEntity extends AuditEntity{
+
+public class CategoriesEntity {
     @Id
     @Column(name = "id")
     public UUID id;
-    @Column(name = "user_id")
-    public UUID podcastId;
-    @Column(name = "rating")
-    public int rating;
-    @Column(name = "review_text")
-    public String reviewText;
-
+    @Column(name = "name")
+    public String name;
+    @Column(name = "description")
+    public String description;
 }
