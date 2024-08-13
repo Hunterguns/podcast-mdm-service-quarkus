@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.sandeep.core.entity.UserEntity;
 import org.sandeep.model.User;
 import org.sandeep.model.UserRequest;
-import org.sandeep.repository.UsersRepository;
 import org.sandeep.service.UserService;
 import org.sandeep.utils.PasswordUtils;
 
@@ -14,12 +13,6 @@ import static org.sandeep.Constants.ApplicationConstants.FREE_USER;
 
 @Slf4j
 public class UserServiceImpl implements UserService {
-
-    private final UsersRepository usersRepository;
-
-    public UserServiceImpl(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
-    }
 
     @Override
     public User registerUser(UserRequest userRequest){
