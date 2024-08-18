@@ -1,5 +1,6 @@
 package org.sandeep.core.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -19,10 +20,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class EpisodesEntity {
-    @Id
-    @Column(name = "id")
-    public UUID id;
+public class EpisodesEntity extends PanacheEntity {
+
     @Column(name = "podcast_id")
     public UUID podcastId;
     @Column(name = "title")

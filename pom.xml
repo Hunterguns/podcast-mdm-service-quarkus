@@ -38,10 +38,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-scheduler</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-jwt</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-logging-json</artifactId>
@@ -107,14 +104,19 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-jwt</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-jwt-build</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-security-jpa</artifactId>-->
+<!--            <version>3.13.2</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-smallrye-jwt</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-smallrye-jwt-build</artifactId>-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
         <dependency>
             <groupId>org.mindrot</groupId>
