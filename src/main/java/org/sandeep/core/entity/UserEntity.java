@@ -8,7 +8,6 @@ import org.sandeep.model.User;
 import java.util.UUID;
 import java.util.function.Function;
 
-import static org.sandeep.Constants.ApplicationConstants.FREE_USER;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -18,9 +17,6 @@ import static org.sandeep.Constants.ApplicationConstants.FREE_USER;
 @AllArgsConstructor
 @Builder
 public class UserEntity extends PanacheEntity{
-    @Id
-    @Column(name = "id")
-    public UUID id;
     @Column(name = "username")
     public String username;
     @Column(name = "email")

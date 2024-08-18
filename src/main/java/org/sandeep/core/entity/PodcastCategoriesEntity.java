@@ -1,9 +1,8 @@
 package org.sandeep.core.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,9 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PodcastCategoriesEntity {
+public class PodcastCategoriesEntity extends PanacheEntityBase {
+    @EmbeddedId
+    private PodcastCategoriesId id;
     @Column(name = "category_id")
     public UUID categoryId;
     @Column(name = "podcast_id")
