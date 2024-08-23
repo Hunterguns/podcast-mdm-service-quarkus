@@ -1,10 +1,8 @@
 package org.sandeep.core.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +17,11 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class PlaybackHistoryEntity extends PanacheEntity {
+public class PlaybackHistoryEntity extends PanacheEntityBase {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
+    public UUID id;
     @Column(name = "user_id")
     public UUID userId;
     @Column(name = "episode_id")

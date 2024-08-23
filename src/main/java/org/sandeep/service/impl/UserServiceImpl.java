@@ -2,8 +2,8 @@ package org.sandeep.service.impl;
 
 import com.google.common.base.Strings;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.microprofile.openapi.annotations.Components;
 import org.sandeep.core.entity.UserEntity;
 import org.sandeep.model.User;
 import org.sandeep.model.UserRequest;
@@ -11,6 +11,8 @@ import org.sandeep.service.UserService;
 import org.sandeep.utils.PasswordUtils;
 
 import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
 import static org.sandeep.Constants.UserTypes.FREE_USER;
 
@@ -19,12 +21,13 @@ import static org.sandeep.Constants.UserTypes.FREE_USER;
 public class UserServiceImpl implements UserService {
 
     @Override
-    public User registerUser(UserRequest userRequest){
-        if(Strings.isNullOrEmpty(userRequest.getPassword()) || Strings.isNullOrEmpty(userRequest.confirmPassword) || !userRequest.getPassword().equals(userRequest.getConfirmPassword())){
+    @Transactional
+    public User registerUser(UserRequest userRequest) {
+        if (Strings.isNullOrEmpty(userRequest.getPassword()) || Strings.isNullOrEmpty(userRequest.confirmPassword) || !userRequest.getPassword().equals(userRequest.getConfirmPassword())) {
             log.error("Password and confirm password are mandatory and should match");
         }
         UserEntity existingUser = UserEntity.findByEmail(userRequest.getEmail());
-        if(Objects.nonNull(existingUser)) {
+        if (Objects.nonNull(existingUser)) {
             //throw exception
             log.error("User with email already exists");
             return null;
@@ -45,7 +48,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteUserById(String userId){
+    @Transactional
+    public boolean deleteUserById(UUID userId) {
         return UserEntity.deleteById(userId);
+    }
+
+    @Override
+    public User getUser(UserRequest userRequest) throws Exception {
+        UserEntity userEntity;
+        if (Objects.nonNull(userRequest.getId())) {
+            userEntity = UserEntity.findById(userRequest.getId());
+        } else if (!Strings.isNullOrEmpty(userRequest.getUsername())) {
+            userEntity = UserEntity.findByUserName(userRequest.getUsername());
+        } else if (!Strings.isNullOrEmpty(userRequest.getEmail())) {
+            userEntity = UserEntity.findByEmail(userRequest.getEmail());
+        } else {
+            throw new Exception("Please provide atleast one of the following: userId, username, email");
+        }
+        return UserEntity.toUser.apply(userEntity);
+    }
+
+    @Override
+    @Transactional
+    public boolean updateUser(UserRequest userRequest) {
+        try {
+            UserEntity userEntity = UserEntity.findById(userRequest.getId());
+            if (Objects.nonNull(userEntity)) {
+                Optional.ofNullable(userRequest.getNewUserName()).ifPresent(u -> userEntity.setUsername(userRequest.getNewUserName()));
+                Optional.ofNullable(userRequest.getNewEmail()).ifPresent(u -> userEntity.setEmail(userRequest.getNewEmail()));
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }
