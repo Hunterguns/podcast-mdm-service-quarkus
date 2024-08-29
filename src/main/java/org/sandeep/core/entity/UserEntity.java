@@ -1,6 +1,7 @@
 package org.sandeep.core.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import lombok.*;
 import org.sandeep.model.User;
@@ -16,7 +17,11 @@ import java.util.function.Function;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserEntity extends PanacheEntity{
+public class UserEntity extends PanacheEntityBase {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
+    public UUID id;
     @Column(name = "username")
     public String username;
     @Column(name = "email")
@@ -35,4 +40,5 @@ public class UserEntity extends PanacheEntity{
     public static UserEntity findByEmail(String email) {
         return find("email", email).firstResult();
     }
+    public static UserEntity findByUserName(String username){ return find("username", username).firstResult(); }
 }

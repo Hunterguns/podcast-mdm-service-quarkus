@@ -18,4 +18,6 @@ public class UserRequest {
     public String userType;
     public String password;
     public String confirmPassword;
+    public String newUserName;
+    public String newEmail;
 }
