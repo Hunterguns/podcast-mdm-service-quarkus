@@ -22,11 +22,11 @@ public class PodcastSubscriptionsEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "user_id")
-    public UUID userId;
+    private UUID userId;
     @Column(name = "podcast_id")
-    public UUID podcastId;
+    private UUID podcastId;
     @Column(name = "subscribed_at")
-    public LocalDate subscribedAt;
+    private LocalDate subscribedAt;
 }

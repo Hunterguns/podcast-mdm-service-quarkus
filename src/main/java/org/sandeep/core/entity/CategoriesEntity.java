@@ -20,9 +20,9 @@ public class CategoriesEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "name")
-    public String name;
+    private String name;
     @Column(name = "description")
-    public String description;
+    private String description;
 }

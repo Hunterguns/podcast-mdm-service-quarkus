@@ -20,7 +20,7 @@ public class PodcastCategoriesEntity extends PanacheEntityBase {
     @EmbeddedId
     private PodcastCategoriesId id;
     @Column(name = "category_id")
-    public UUID categoryId;
+    private UUID categoryId;
     @Column(name = "podcast_id")
-    public UUID podcastId;
+    private UUID podcastId;
 }

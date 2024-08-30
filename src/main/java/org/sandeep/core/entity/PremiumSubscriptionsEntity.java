@@ -20,17 +20,17 @@ public class PremiumSubscriptionsEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "user_id")
-    public String userId;
+    private String userId;
     @Column(name = "start_date")
-    public LocalDate startDate;
+    private LocalDate startDate;
     @Column(name = "end_date")
-    public LocalDate endDate;
+    private LocalDate endDate;
     @Column(name = "subscription_type")
-    public String subscriptionType;
+    private String subscriptionType;
     @Column(name = "status")
-    public String status;
+    private String status;
     @Column(name = "created_at")
     LocalDateTime createdAt;
     @Column(name = "updated_at")

@@ -21,15 +21,15 @@ public class UserEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "username")
-    public String username;
+    private String username;
     @Column(name = "email")
-    public String email;
+    private String email;
     @Column(name = "user_type")
-    public String userType;
+    private String userType;
     @Column(name = "hashed_password")
-    public String hashedPassword;
+    private String hashedPassword;
 
     public static final Function<UserEntity, User> toUser = userEntity -> User.builder()
             .username(userEntity.getUsername())

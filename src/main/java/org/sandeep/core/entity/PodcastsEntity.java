@@ -20,19 +20,19 @@ public class PodcastsEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "creator_id")
-    public UUID creatorId;
+    private UUID creatorId;
     @Column(name = "title")
-    public String title;
+    private String title;
     @Column(name = "description")
-    public String description;
+    private String description;
     @Column(name = "cover_image_url")
-    public String coverImageUrl;
+    private String coverImageUrl;
     @Column(name = "language")
-    public String language;
+    private String language;
     @Column(name = "is_explicit")
-    public boolean isExplicit;
+    private boolean isExplicit;
     @Column(name = "created_at")
     LocalDateTime createdAt;
     @Column(name = "updated_at")

@@ -22,21 +22,21 @@ public class EpisodesEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "podcast_id")
-    public UUID podcastId;
+    private UUID podcastId;
     @Column(name = "title")
-    public String title;
+    private String title;
     @Column(name = "description")
-    public String description;
+    private String description;
     @Column(name = "audio_file_url")
-    public String audioFileUrl;
+    private String audioFileUrl;
     @Column(name = "duration")
-    public String duration;
+    private String duration;
     @Column(name = "publish_date")
-    public LocalDate publishDate;
+    private LocalDate publishDate;
     @Column(name = "episode_number")
-    public int episodeNumber;
+    private int episodeNumber;
     @Column(name = "season_number")
-    public int seasonNumber;
+    private int seasonNumber;
 }
