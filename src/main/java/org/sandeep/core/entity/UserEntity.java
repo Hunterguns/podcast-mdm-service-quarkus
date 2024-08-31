@@ -10,7 +10,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "users")
 @Data

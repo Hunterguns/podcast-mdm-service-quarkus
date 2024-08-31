@@ -78,3 +78,24 @@ type Ratings{
     createdAt: String
     updatedAt: String
 }
+
+input UserRequest{
+    id: ID!
+    username: String
+    email: String
+    usertype: String
+    password: String
+    confirmPassword: String
+    newUserName: String
+    newEmail: String
+}
+
+type Query{
+    getUser(userRequest: UserRequest): User
+}
+
+type Mutation{
+    createUser(userRequest: UserRequest): User
+    updateUser(userRequest: UserRequest): String
+    deleteUserById(id: ID!): String
+}
