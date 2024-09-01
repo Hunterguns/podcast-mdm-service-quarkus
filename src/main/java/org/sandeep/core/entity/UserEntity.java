@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 @EqualsAndHashCode(callSuper = false)
 @Entity
-@Table(name = "users")
+@Table(name = "user_table")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
