@@ -80,7 +80,7 @@ type Ratings{
 }
 
 input UserRequest{
-    id: ID!
+    id: ID
     username: String
     email: String
     usertype: String
@@ -88,6 +88,16 @@ input UserRequest{
     confirmPassword: String
     newUserName: String
     newEmail: String
+}
+
+input PodcastRequest{
+    id: ID
+    creatorId: ID
+    title: String
+    description: String
+    coverImageUrl: String
+    language: String
+    isExplicit: Boolean
 }
 
 type Query{
@@ -98,4 +108,5 @@ type Mutation{
     createUser(userRequest: UserRequest): User
     updateUser(userRequest: UserRequest): String
     deleteUserById(id: ID!): String
+    createPodcast(podcastRequest: PodcastRequest): Podcast
 }

@@ -1,14 +1,14 @@
 package org.sandeep.core.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.panache.common.Parameters;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.sandeep.model.Podcast;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.function.Function;
 
 @Entity
 @Table(name = "podcast")
@@ -16,6 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Builder
 public class PodcastEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,4 +39,20 @@ public class PodcastEntity extends PanacheEntityBase {
     @Column(name = "updated_at")
     LocalDateTime updatedAt;
 
+    public static final Function<PodcastEntity, Podcast> toPodcast = podcastEntity ->
+            Podcast.builder()
+                    .id(podcastEntity.getId())
+                    .creatorId(podcastEntity.getCreatorId())
+                    .title(podcastEntity.getTitle())
+                    .description(podcastEntity.getDescription())
+                    .coverImageUrl(podcastEntity.getCoverImageUrl())
+                    .language(podcastEntity.getLanguage())
+                    .isExplicit(podcastEntity.isExplicit())
+                    .createdAt(podcastEntity.getCreatedAt())
+                    .updatedAt(podcastEntity.getUpdatedAt())
+                    .build();
+
+    public static PodcastEntity findByCreatorIdAndTitle(UUID creatorId, String title) {
+        return find("creator_id = :creatorId and title = :title", Parameters.with("creatorId", creatorId).and("title", title)).firstResult();
+    }
 }
