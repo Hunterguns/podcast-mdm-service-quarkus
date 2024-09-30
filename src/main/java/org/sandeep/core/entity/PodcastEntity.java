@@ -53,6 +53,6 @@ public class PodcastEntity extends PanacheEntityBase {
                     .build();
 
     public static PodcastEntity findByCreatorIdAndTitle(UUID creatorId, String title) {
-        return find("creator_id = :creatorId and title = :title", Parameters.with("creatorId", creatorId).and("title", title)).firstResult();
+        return find("creatorId = :creatorId and title = :title", Parameters.with("creatorId", creatorId).and("title", title)).firstResult();
     }
 }

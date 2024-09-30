@@ -9,6 +9,8 @@ import org.sandeep.model.Podcast;
 import org.sandeep.model.PodcastRequest;
 import org.sandeep.service.PodcastService;
 
+import java.util.List;
+
 @GraphQLApi
 public class PodcastController {
     @Inject
@@ -18,5 +20,10 @@ public class PodcastController {
     @Description("Create a new podcast")
     public Podcast createPodcast(@Source PodcastRequest podcastRequest){
         return podcastService.createPodcast(podcastRequest);
+    }
+
+    @Query(value = "filterPodcast")
+    public List<Podcast> filterPodcast(@Source PodcastRequest podcastRequest){
+        return podcastService.filterPodcast(podcastRequest);
     }
 }
