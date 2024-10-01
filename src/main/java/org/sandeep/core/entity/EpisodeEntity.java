@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -37,4 +38,8 @@ public class EpisodeEntity extends PanacheEntityBase {
     private int episodeNumber;
     @Column(name = "season_number")
     private int seasonNumber;
+
+    public static List<EpisodeEntity> findAllByPodcastId(String podcastId) {
+        return EpisodeEntity.find("podcastId", podcastId).list();
+    }
 }
