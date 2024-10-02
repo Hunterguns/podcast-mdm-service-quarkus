@@ -11,6 +11,6 @@ public interface PodcastService {
 
     Podcast getPodcastById(String id);
 
-    String updatePodcast(PodcastRequest podcastRequest);
-    String deletePodcastById(String podcastId);
+    Boolean updatePodcast(PodcastRequest podcastRequest);
+    Boolean deletePodcastById(String podcastId);
 }

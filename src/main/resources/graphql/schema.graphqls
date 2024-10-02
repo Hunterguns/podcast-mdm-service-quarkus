@@ -102,6 +102,7 @@ input PodcastRequest{
 
 type Query{
     getUser(userRequest: UserRequest): User
+    filterPodcast(podcastRequest: PodcastRequest): [Podcast]
 }
 
 type Mutation{
@@ -109,4 +110,5 @@ type Mutation{
     updateUser(userRequest: UserRequest): String
     deleteUserById(id: ID!): String
     createPodcast(podcastRequest: PodcastRequest): Podcast
+    deletePodcast(podcastId: String): String
 }

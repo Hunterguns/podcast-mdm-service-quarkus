@@ -1,6 +1,7 @@
 package org.sandeep.controller;
 
 import jakarta.inject.Inject;
+import jakarta.ws.rs.PathParam;
 import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Query;
@@ -25,5 +26,15 @@ public class PodcastController {
     @Query(value = "filterPodcast")
     public List<Podcast> filterPodcast(@Source PodcastRequest podcastRequest){
         return podcastService.filterPodcast(podcastRequest);
+    }
+
+    @Query(value = "deletePodcast")
+    public String deletePodcast(@Source String podcastId){
+        Boolean status = podcastService.deletePodcastById(podcastId);
+        if(status){
+            return "Podcast and related episodes deleted successfully";
+        }else{
+            return "Unable to delete podcast and related episodes. Something went wrong";
+        }
     }
 }
