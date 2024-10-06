@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.sandeep.core.entity.EpisodeEntity;
 import org.sandeep.core.entity.PodcastEntity;
 import org.sandeep.model.Podcast;
-import org.sandeep.model.PodcastRequest;
+import org.sandeep.model.requests.PodcastRequest;
 import org.sandeep.service.EpisodeService;
 import org.sandeep.service.PodcastService;
 

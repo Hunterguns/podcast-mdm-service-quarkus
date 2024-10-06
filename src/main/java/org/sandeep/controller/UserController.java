@@ -1,11 +1,9 @@
 package org.sandeep.controller;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import lombok.RequiredArgsConstructor;
 import org.eclipse.microprofile.graphql.*;
 import org.sandeep.model.User;
-import org.sandeep.model.UserRequest;
+import org.sandeep.model.requests.UserRequest;
 import org.sandeep.service.UserService;
 
 import java.util.UUID;

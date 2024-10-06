@@ -1,4 +1,4 @@
-package org.sandeep.model;
+package org.sandeep.model.requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
