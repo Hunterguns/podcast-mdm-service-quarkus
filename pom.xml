@@ -104,7 +104,15 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
+        <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-smallrye-graphql -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-graphql</artifactId>
+            <version>3.14.1</version>
+        </dependency>
+
+
+        <!--        <dependency>-->
 <!--            <groupId>io.quarkus</groupId>-->
 <!--            <artifactId>quarkus-security-jpa</artifactId>-->
 <!--            <version>3.13.2</version>-->

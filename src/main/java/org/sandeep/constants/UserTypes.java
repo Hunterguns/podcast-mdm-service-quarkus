@@ -1,4 +1,4 @@
-package org.sandeep.Constants;
+package org.sandeep.constants;
 
 public enum UserTypes {
     FREE_USER,

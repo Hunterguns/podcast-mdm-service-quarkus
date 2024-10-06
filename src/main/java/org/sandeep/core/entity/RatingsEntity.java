@@ -5,6 +5,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -15,18 +16,18 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@EqualsAndHashCode(callSuper = false)
 public class RatingsEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "user_id")
-    public UUID podcastId;
+    private UUID podcastId;
     @Column(name = "rating")
-    public int rating;
+    private int rating;
     @Column(name = "review_text")
-    public String reviewText;
+    private String reviewText;
     @Column(name = "created_at")
     LocalDateTime createdAt;
     @Column(name = "updated_at")

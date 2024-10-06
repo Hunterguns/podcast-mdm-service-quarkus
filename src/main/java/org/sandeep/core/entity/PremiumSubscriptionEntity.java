@@ -1,10 +1,10 @@
 package org.sandeep.core.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
@@ -12,25 +12,26 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "premium_subscriptions")
+@Table(name = "premium_subscription")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PremiumSubscriptionsEntity extends PanacheEntityBase {
+@EqualsAndHashCode(callSuper = false)
+public class PremiumSubscriptionEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(columnDefinition = "uuid", name = "id", updatable = false, nullable = false)
-    public UUID id;
+    private UUID id;
     @Column(name = "user_id")
-    public String userId;
+    private String userId;
     @Column(name = "start_date")
-    public LocalDate startDate;
+    private LocalDate startDate;
     @Column(name = "end_date")
-    public LocalDate endDate;
+    private LocalDate endDate;
     @Column(name = "subscription_type")
-    public String subscriptionType;
+    private String subscriptionType;
     @Column(name = "status")
-    public String status;
+    private String status;
     @Column(name = "created_at")
     LocalDateTime createdAt;
     @Column(name = "updated_at")

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Embeddable
 @Data
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 public class PodcastCategoriesId implements Serializable {
     private UUID podcastId;
     private UUID categoryId;
