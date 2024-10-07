@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.sandeep.model.Episode;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +32,7 @@ public class EpisodeEntity extends PanacheEntityBase {
     @Column(name = "audio_file_url")
     private String audioFileUrl;
     @Column(name = "duration")
-    private String duration;
+    private Duration duration;
     @Column(name = "publish_date")
     private LocalDate publishDate;
     @Column(name = "episode_number")
@@ -46,7 +47,7 @@ public class EpisodeEntity extends PanacheEntityBase {
             .title(episodeEntity.getTitle())
             .description(episodeEntity.getDescription())
             .audioFileUrl(episodeEntity.audioFileUrl)
-            .duration(episodeEntity.getDuration())
+            .duration(episodeEntity.getDuration().toString())
             .publishDate(episodeEntity.getPublishDate())
             .episodeNumber(episodeEntity.getEpisodeNumber())
             .seasonNumber(episodeEntity.getSeasonNumber())

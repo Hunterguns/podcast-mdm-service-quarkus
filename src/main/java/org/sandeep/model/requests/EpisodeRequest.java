@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.sandeep.core.entity.EpisodeEntity;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.UUID;
 import java.util.function.Function;
@@ -34,7 +35,7 @@ public class EpisodeRequest {
                     .title(episodeRequest.getTitle())
                     .description(episodeRequest.getDescription())
                     .audioFileUrl(episodeRequest.getAudioFileUrl())
-                    .duration(episodeRequest.getDuration())
+                    .duration(Duration.parse(episodeRequest.getDuration()))
                     .publishDate(episodeRequest.getPublishDate())
                     .episodeNumber(episodeRequest.getEpisodeNumber())
                     .seasonNumber(episodeRequest.getSeasonNumber())

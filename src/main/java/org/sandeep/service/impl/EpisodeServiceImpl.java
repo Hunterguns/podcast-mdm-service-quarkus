@@ -8,6 +8,8 @@ import org.sandeep.model.Episode;
 import org.sandeep.model.requests.EpisodeRequest;
 import org.sandeep.service.EpisodeService;
 
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -20,8 +22,10 @@ public class EpisodeServiceImpl implements EpisodeService {
 
     @Override
     @Transactional
-    public Episode createEpisode(EpisodeRequest episodeRequest){
+    public Episode createEpisode(EpisodeRequest episodeRequest){        //TODO: Take duration as time or string, convert and store accordingly in the db
+        Duration parse = Duration.parse(episodeRequest.getDuration());
         EpisodeEntity episodeEntity = EpisodeRequest.toEpisodeEntity.apply(episodeRequest);
+        episodeEntity.setPublishDate(LocalDate.now());
         EpisodeEntity.persist(episodeEntity);
         return EpisodeEntity.toEpisode.apply(episodeEntity);
     }

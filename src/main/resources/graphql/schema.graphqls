@@ -15,7 +15,7 @@ type Category{
 }
 
 type Episode{
-    id: ID!
+    id: ID
     podcastId: ID
     title: String
     description: String
@@ -100,6 +100,18 @@ input PodcastRequest{
     isExplicit: Boolean
 }
 
+input EpisodeRequest{
+    id: ID
+    podcastId: ID
+    title: String
+    description: String
+    audioFileUrl: String
+    duration: String
+    publishDate: Date
+    episodeNumber: Int
+    seasonNumber: Int
+}
+
 type Query{
     getUser(userRequest: UserRequest): User
     filterPodcast(podcastRequest: PodcastRequest): [Podcast]
@@ -111,4 +123,5 @@ type Mutation{
     deleteUserById(id: ID!): String
     createPodcast(podcastRequest: PodcastRequest): Podcast
     deletePodcast(podcastId: String): String
+    createEpisode(episodeRequest: EpisodeRequest): Episode
 }
