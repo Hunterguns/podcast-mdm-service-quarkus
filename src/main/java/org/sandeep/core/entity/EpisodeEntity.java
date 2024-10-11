@@ -32,7 +32,7 @@ public class EpisodeEntity extends PanacheEntityBase {
     @Column(name = "audio_file_url")
     private String audioFileUrl;
     @Column(name = "duration")
-    private Duration duration;
+    private long duration;
     @Column(name = "publish_date")
     private LocalDate publishDate;
     @Column(name = "episode_number")
@@ -47,7 +47,7 @@ public class EpisodeEntity extends PanacheEntityBase {
             .title(episodeEntity.getTitle())
             .description(episodeEntity.getDescription())
             .audioFileUrl(episodeEntity.audioFileUrl)
-            .duration(episodeEntity.getDuration().toString())
+            .duration(episodeEntity.getDuration())
             .publishDate(episodeEntity.getPublishDate())
             .episodeNumber(episodeEntity.getEpisodeNumber())
             .seasonNumber(episodeEntity.getSeasonNumber())

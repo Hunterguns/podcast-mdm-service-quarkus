@@ -35,7 +35,7 @@ public class EpisodeRequest {
                     .title(episodeRequest.getTitle())
                     .description(episodeRequest.getDescription())
                     .audioFileUrl(episodeRequest.getAudioFileUrl())
-                    .duration(Duration.parse(episodeRequest.getDuration()))
+                    .duration(Duration.parse(episodeRequest.getDuration()).toSeconds())
                     .publishDate(episodeRequest.getPublishDate())
                     .episodeNumber(episodeRequest.getEpisodeNumber())
                     .seasonNumber(episodeRequest.getSeasonNumber())
