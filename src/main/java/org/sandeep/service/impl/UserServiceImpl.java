@@ -1,12 +1,17 @@
 package org.sandeep.service.impl;
 
 import com.google.common.base.Strings;
+import io.netty.handler.codec.http.HttpResponseStatus;
+import io.vertx.ext.web.handler.HttpException;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.sandeep.core.entity.UserEntity;
+import org.sandeep.model.LoginResponse;
 import org.sandeep.model.User;
 import org.sandeep.model.requests.UserRequest;
+import org.sandeep.service.JwtTokenService;
 import org.sandeep.service.UserService;
 import org.sandeep.utils.PasswordUtils;
 
@@ -19,6 +24,9 @@ import static org.sandeep.constants.UserTypes.FREE_USER;
 @Slf4j
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
+
+    @Inject
+    JwtTokenService jwtTokenService;
 
     @Override
     @Transactional
@@ -79,6 +87,24 @@ public class UserServiceImpl implements UserService {
                 return true;
             }
             return false;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public LoginResponse userLogin(UserRequest userRequest){
+        try {
+            UserEntity userEntity = !Strings.isNullOrEmpty(userRequest.getUsername())?UserEntity.findByUserName(userRequest.getUsername()):UserEntity.findByEmail(userRequest.getEmail());
+            if(Objects.isNull(userEntity)){
+                throw new HttpException(HttpResponseStatus.BAD_REQUEST.code());
+            }
+            boolean validPassword = PasswordUtils.verifyPassword(userRequest.getPassword(), userEntity.getHashedPassword());
+            if(validPassword){
+                return LoginResponse.builder().username(userEntity.getUsername()).token(jwtTokenService.generateToken(UserEntity.toUser.apply(userEntity))).build();
+            }else{
+                throw new HttpException(HttpResponseStatus.UNAUTHORIZED.code());
+            }
         } catch (Exception e) {
             throw e;
         }
