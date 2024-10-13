@@ -1,7 +1,7 @@
 package org.sandeep.service;
 
 import org.sandeep.model.Podcast;
-import org.sandeep.model.PodcastRequest;
+import org.sandeep.model.requests.PodcastRequest;
 
 import java.util.List;
 

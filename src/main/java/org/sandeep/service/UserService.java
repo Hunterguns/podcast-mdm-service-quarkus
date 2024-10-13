@@ -1,7 +1,7 @@
 package org.sandeep.service;
 
 import org.sandeep.model.User;
-import org.sandeep.model.UserRequest;
+import org.sandeep.model.requests.UserRequest;
 
 import java.util.UUID;
 

@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.sandeep.core.entity.UserEntity;
 import org.sandeep.model.User;
-import org.sandeep.model.UserRequest;
+import org.sandeep.model.requests.UserRequest;
 import org.sandeep.service.UserService;
 import org.sandeep.utils.PasswordUtils;
 

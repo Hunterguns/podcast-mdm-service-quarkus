@@ -21,7 +21,7 @@ public class Episode {
     String title;
     String description;
     String audioFileUrl;
-    String duration;
+    long duration;
     LocalDate publishDate;
     int episodeNumber;
     int seasonNumber;

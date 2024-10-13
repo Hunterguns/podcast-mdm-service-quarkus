@@ -2,12 +2,10 @@ package org.sandeep.core.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.sandeep.model.Episode;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -19,6 +17,7 @@ import java.util.function.Function;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@Builder
 public class EpisodeEntity extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +32,7 @@ public class EpisodeEntity extends PanacheEntityBase {
     @Column(name = "audio_file_url")
     private String audioFileUrl;
     @Column(name = "duration")
-    private String duration;
+    private long duration;
     @Column(name = "publish_date")
     private LocalDate publishDate;
     @Column(name = "episode_number")

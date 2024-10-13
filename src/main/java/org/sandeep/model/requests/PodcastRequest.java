@@ -1,7 +1,6 @@
-package org.sandeep.model;
+package org.sandeep.model.requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.sandeep.core.entity.PodcastEntity;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Function;
 

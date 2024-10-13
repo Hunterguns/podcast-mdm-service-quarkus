@@ -1,14 +1,13 @@
 package org.sandeep.controller;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.PathParam;
 import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Source;
 import org.sandeep.model.Episode;
 import org.sandeep.model.Podcast;
-import org.sandeep.model.PodcastRequest;
+import org.sandeep.model.requests.PodcastRequest;
 import org.sandeep.service.EpisodeService;
 import org.sandeep.service.PodcastService;
 
