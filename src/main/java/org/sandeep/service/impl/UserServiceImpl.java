@@ -100,8 +100,12 @@ public class UserServiceImpl implements UserService {
                 throw new HttpException(HttpResponseStatus.BAD_REQUEST.code());
             }
             boolean validPassword = PasswordUtils.verifyPassword(userRequest.getPassword(), userEntity.getHashedPassword());
+            User user = UserEntity.toUser.apply(userEntity);
             if(validPassword){
-                return LoginResponse.builder().username(userEntity.getUsername()).token(jwtTokenService.generateToken(UserEntity.toUser.apply(userEntity))).build();
+                return LoginResponse.builder().username(userEntity.getUsername())
+                        .token(jwtTokenService.generateToken(user))
+                        .refreshToken(jwtTokenService.generateRefreshToken(user))
+                        .build();
             }else{
                 throw new HttpException(HttpResponseStatus.UNAUTHORIZED.code());
             }

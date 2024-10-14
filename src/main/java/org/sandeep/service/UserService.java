@@ -15,6 +15,5 @@ public interface UserService {
 
     boolean updateUser(UserRequest userRequest);
 
-
     LoginResponse userLogin(UserRequest userRequest);
 }
