@@ -114,7 +114,7 @@ input EpisodeRequest{
 
 type LoginResponse{
     username: String
-    token: String
+    accessToken: String
     refreshToken: String
 }
 
@@ -124,16 +124,16 @@ type Query{
 }
 
 type Mutation{
-#    user
+    #    user
     createUser(userRequest: UserRequest): User
     updateUser(userRequest: UserRequest): String
     deleteUserById(id: ID!): String
     userLogin(userRequest: UserRequest): LoginResponse
 
-#    podcast
+    #    podcast
     createPodcast(podcastRequest: PodcastRequest): Podcast
     deletePodcast(podcastId: String): String
 
-#    episode
+    #    episode
     createEpisode(episodeRequest: EpisodeRequest): Episode
 }

@@ -29,7 +29,7 @@ public class PodcastServiceImpl implements PodcastService {
     @Transactional
     public Podcast createPodcast(PodcastRequest podcastRequest) {
         PodcastEntity existingPodcast = PodcastEntity.findByCreatorIdAndTitle(podcastRequest.getCreatorId(), podcastRequest.getTitle());
-        if(Objects.nonNull(existingPodcast)){
+        if (Objects.nonNull(existingPodcast)) {
             log.error("Podcast with title " + podcastRequest.getTitle() + "was already created by the user.");
         }
         PodcastEntity podcastEntity = PodcastRequest.toPodcastEntity.apply(podcastRequest);
@@ -43,25 +43,25 @@ public class PodcastServiceImpl implements PodcastService {
         queryBuilder.append("1=1");
 
         PanacheQuery<PanacheEntityBase> query = PodcastEntity.find(queryBuilder.toString());
-        if(!Strings.isNullOrEmpty(podcastRequest.getTitle())){
+        if (!Strings.isNullOrEmpty(podcastRequest.getTitle())) {
             queryBuilder.append(" and title = :title");
             query = query.withHint("title", podcastRequest.getTitle());
         }
-        if(podcastRequest.getCreatorId() != null){
+        if (podcastRequest.getCreatorId() != null) {
             queryBuilder.append("and creatorId = :creatorId");
             query = query.withHint("creatorId", podcastRequest.getCreatorId());
         }
-        if(!Strings.isNullOrEmpty(podcastRequest.getLanguage())){
+        if (!Strings.isNullOrEmpty(podcastRequest.getLanguage())) {
             queryBuilder.append("and language = :language");
             query = query.withHint("language", podcastRequest.getLanguage());
         }
 
         List<PodcastEntity> list = query.list();
-        return list.stream().map(podcastEntity-> PodcastEntity.toPodcast.apply(podcastEntity)).toList();
+        return list.stream().map(podcastEntity -> PodcastEntity.toPodcast.apply(podcastEntity)).toList();
     }
 
     @Override
-    public Podcast getPodcastById(String id){
+    public Podcast getPodcastById(String id) {
         PodcastEntity podcastEntity = PodcastEntity.findById(id, LockModeType.NONE);
         return PodcastEntity.toPodcast.apply(podcastEntity);
     }
@@ -72,11 +72,11 @@ public class PodcastServiceImpl implements PodcastService {
         PodcastEntity updatedPodcastEntity = PodcastEntity.builder()
                 .id(podcastEntity.getId())
                 .creatorId(podcastEntity.getCreatorId())
-                .title(Strings.isNullOrEmpty(podcastRequest.getTitle())?podcastEntity.getTitle():podcastRequest.getTitle())
-                .language(Strings.isNullOrEmpty(podcastRequest.getLanguage())?podcastEntity.getLanguage():podcastRequest.getLanguage())
-                .isExplicit(Objects.isNull(podcastRequest.isExplicit())?podcastEntity.isExplicit():podcastRequest.isExplicit())
-                .description(Strings.isNullOrEmpty(podcastRequest.getDescription())?podcastEntity.getDescription():podcastRequest.getDescription())
-                .coverImageUrl(Strings.isNullOrEmpty(podcastRequest.getCoverImageUrl())?podcastEntity.getCoverImageUrl():podcastRequest.getCoverImageUrl())
+                .title(Strings.isNullOrEmpty(podcastRequest.getTitle()) ? podcastEntity.getTitle() : podcastRequest.getTitle())
+                .language(Strings.isNullOrEmpty(podcastRequest.getLanguage()) ? podcastEntity.getLanguage() : podcastRequest.getLanguage())
+                .isExplicit(Objects.isNull(podcastRequest.isExplicit()) ? podcastEntity.isExplicit() : podcastRequest.isExplicit())
+                .description(Strings.isNullOrEmpty(podcastRequest.getDescription()) ? podcastEntity.getDescription() : podcastRequest.getDescription())
+                .coverImageUrl(Strings.isNullOrEmpty(podcastRequest.getCoverImageUrl()) ? podcastEntity.getCoverImageUrl() : podcastRequest.getCoverImageUrl())
                 .createdAt(podcastEntity.getCreatedAt())
                 .updatedAt(LocalDateTime.now())
                 .build();

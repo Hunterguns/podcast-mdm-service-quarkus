@@ -38,6 +38,7 @@ nb-configuration.xml
 
 #keys
 *.pem
+*.key
 
 # Local environment
 .env

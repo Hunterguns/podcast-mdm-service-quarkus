@@ -16,7 +16,7 @@ public class EpisodeController {
 
     @Query(value = "createEpisode")
     @Description(value = "Add episode to a podcast")
-    public Episode createEpisode(@Source EpisodeRequest episodeRequest){
+    public Episode createEpisode(@Source EpisodeRequest episodeRequest) {
         Episode episode = episodeService.createEpisode(episodeRequest);
         return episode;
     }

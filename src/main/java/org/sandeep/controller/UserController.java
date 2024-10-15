@@ -36,13 +36,13 @@ public class UserController {
 
     @Mutation(value = "deleteUserById")
     @Description("Delete an existing user")
-    public String deleteUserById(@Source UUID id){
-        return userService.deleteUserById(id)? "Successfully deleted user":"Unable to delete user. Please try again.";
+    public String deleteUserById(@Source UUID id) {
+        return userService.deleteUserById(id) ? "Successfully deleted user" : "Unable to delete user. Please try again.";
     }
 
     @Mutation(value = "userLogin")
     @Description("User login")
-    public LoginResponse userLogin(@Source UserRequest userRequest){
+    public LoginResponse userLogin(@Source UserRequest userRequest) {
         return userService.userLogin(userRequest);
     }
 }

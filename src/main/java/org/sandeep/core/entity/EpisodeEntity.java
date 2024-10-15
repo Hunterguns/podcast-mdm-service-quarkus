@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.sandeep.model.Episode;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -52,6 +51,7 @@ public class EpisodeEntity extends PanacheEntityBase {
             .episodeNumber(episodeEntity.getEpisodeNumber())
             .seasonNumber(episodeEntity.getSeasonNumber())
             .build();
+
     public static List<EpisodeEntity> findAllByPodcastId(String podcastId) {
         return EpisodeEntity.find("podcastId", podcastId).list();
     }

@@ -1,7 +1,6 @@
 package org.sandeep.service;
 
 import jakarta.transaction.Transactional;
-import org.sandeep.core.entity.EpisodeEntity;
 import org.sandeep.model.Episode;
 import org.sandeep.model.requests.EpisodeRequest;
 

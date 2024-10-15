@@ -93,20 +93,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LoginResponse userLogin(UserRequest userRequest){
+    public LoginResponse userLogin(UserRequest userRequest) {
         try {
-            UserEntity userEntity = !Strings.isNullOrEmpty(userRequest.getUsername())?UserEntity.findByUserName(userRequest.getUsername()):UserEntity.findByEmail(userRequest.getEmail());
-            if(Objects.isNull(userEntity)){
+            UserEntity userEntity = !Strings.isNullOrEmpty(userRequest.getUsername()) ? UserEntity.findByUserName(userRequest.getUsername()) : UserEntity.findByEmail(userRequest.getEmail());
+            if (Objects.isNull(userEntity)) {
                 throw new HttpException(HttpResponseStatus.BAD_REQUEST.code());
             }
             boolean validPassword = PasswordUtils.verifyPassword(userRequest.getPassword(), userEntity.getHashedPassword());
             User user = UserEntity.toUser.apply(userEntity);
-            if(validPassword){
+            if (validPassword) {
                 return LoginResponse.builder().username(userEntity.getUsername())
-                        .token(jwtTokenService.generateToken(user))
+                        .accessToken(jwtTokenService.generateToken(user))
                         .refreshToken(jwtTokenService.generateRefreshToken(user))
                         .build();
-            }else{
+            } else {
                 throw new HttpException(HttpResponseStatus.UNAUTHORIZED.code());
             }
         } catch (Exception e) {
