@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.sandeep.core.entity.EpisodeEntity;
 
+import java.io.File;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -27,6 +28,9 @@ public class EpisodeRequest {
     LocalDate publishDate;
     int episodeNumber;
     int seasonNumber;
+//    File audioFile;
+//    String fileName;
+//    String mimeType;
 
     public static final Function<EpisodeRequest, EpisodeEntity> toEpisodeEntity = episodeRequest ->
             EpisodeEntity.builder()

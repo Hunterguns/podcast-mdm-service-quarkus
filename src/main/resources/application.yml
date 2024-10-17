@@ -26,8 +26,10 @@ quarkus:
           access-key-id: awslocal
           secret-access-key: awslocal
 
-bucket:
-  name: podcast-audio-bucket
+s3:
+  bucket:
+    name: podcast-audio-bucket
+
 
 #mp:
 #  jwt:

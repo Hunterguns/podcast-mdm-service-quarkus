@@ -119,6 +119,12 @@
             <artifactId>quarkus-smallrye-graphql</artifactId>
             <version>3.14.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.smallrye/smallrye-graphql-api -->
+        <dependency>
+            <groupId>io.smallrye</groupId>
+            <artifactId>smallrye-graphql-api</artifactId>
+            <version>2.11.0</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.quarkiverse.amazonservices/quarkus-amazon-s3 -->
         <dependency>
             <groupId>io.quarkiverse.amazonservices</groupId>
