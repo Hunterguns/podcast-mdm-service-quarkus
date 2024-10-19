@@ -1,25 +1,27 @@
 package org.sandeep.service;
 
 import com.google.common.base.Strings;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.sandeep.model.FormData;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.core.ResponseBytes;
 import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.http.apache.ApacheHttpClient;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectResponse;
+import software.amazon.awssdk.services.s3.model.ListObjectsResponse;
 import software.amazon.awssdk.services.s3.model.PutObjectResponse;
 
 import java.io.File;
 import java.net.URI;
 import java.time.Duration;
+import java.util.List;
 
 @Slf4j
 @Path("/s3")
@@ -62,15 +64,27 @@ public class AwsS3Service extends AwsS3CommonResource {
         }
     }
 
-//    @GET
-//    @Path("/download-file")
-//    @Produces(MediaType.APPLICATION_OCTET_STREAM)
-//    public Response downloadFile(String objectKey){
-//        if(Strings.isNullOrEmpty(objectKey)){
-//            log.error("Object Key missing while downloading file");
-//            return Response.status(Response.Status.BAD_REQUEST).build();
-//        }
-//        ResponseBytes<GetObjectResponse> objectAsBytes = s3Client.getObjectAsBytes(buildGetObjectRequest(objectKey, bucketName));
-//
-//    }
+    @GET
+    @Path("/download-file")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response downloadFile(String objectKey) {
+        if (Strings.isNullOrEmpty(objectKey)) {
+            log.error("Object Key missing while downloading file");
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        ResponseBytes<GetObjectResponse> objectAsBytes = s3Client.getObjectAsBytes(buildGetObjectRequest(objectKey, bucketName));
+        Response.ResponseBuilder response = Response.ok(objectAsBytes.asByteArray());
+        response.header("Content-Disposition", "attachment;filename=" + objectKey);
+        response.header("Content-Type", objectAsBytes.response().contentType());
+        return response.build();
+    }
+
+    @GET
+    @Path("/list-objects")
+    public List<String> listObjects() {
+        ListObjectsResponse listObjectsResponse = s3Client.listObjects(buildListObjectsRequest(bucketName));
+        return listObjectsResponse.contents().stream().map(t -> t.key()).toList();
+    }
+
+
 }

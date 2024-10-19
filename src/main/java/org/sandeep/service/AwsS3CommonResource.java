@@ -4,6 +4,7 @@ package org.sandeep.service;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.sandeep.model.FormData;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.services.s3.model.ListObjectsRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.UploadPartRequest;
 
@@ -22,5 +23,9 @@ abstract public class AwsS3CommonResource {
                 .bucket(bucketName)
                 .key(objectKey)
                 .build();
+    }
+
+    protected ListObjectsRequest buildListObjectsRequest(String bucketName){
+        return ListObjectsRequest.builder().bucket(bucketName).build();
     }
 }
