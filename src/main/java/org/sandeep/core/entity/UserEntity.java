@@ -1,6 +1,5 @@
 package org.sandeep.core.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import lombok.*;
@@ -40,5 +39,8 @@ public class UserEntity extends PanacheEntityBase {
     public static UserEntity findByEmail(String email) {
         return find("email", email).firstResult();
     }
-    public static UserEntity findByUserName(String username){ return find("username", username).firstResult(); }
+
+    public static UserEntity findByUserName(String username) {
+        return find("username", username).firstResult();
+    }
 }

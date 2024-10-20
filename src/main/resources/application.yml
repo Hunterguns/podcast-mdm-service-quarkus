@@ -1,0 +1,45 @@
+quarkus:
+  http:
+    port: 8080
+    root-path: v1/api
+  smallrye-graphql:
+    path: /graphql
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: root
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/postgres
+      max-size: 16
+  native:
+    resources:
+      includes: publicKey.pem
+  log:
+    level: DEBUG
+  s3:
+    endpoint-override: http://localhost:4566
+    aws:
+      region: us-east-1
+      credentials:
+        type: static
+        static-provider:
+          access-key-id: awslocal
+          secret-access-key: awslocal
+
+s3:
+  bucket:
+    name: podcast-audio-bucket
+
+
+#mp:
+#  jwt:
+#    verify:
+#      publickey:
+#        location: publicKey.pem
+#      issuer: https://podcastpivot.com/sandeep
+#
+#smallrye:
+#  jwt:
+#    sign:
+#      key:
+#        location: privateKey.pem

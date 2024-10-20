@@ -2,6 +2,7 @@ package org.sandeep.controller;
 
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.graphql.*;
+import org.sandeep.model.LoginResponse;
 import org.sandeep.model.User;
 import org.sandeep.model.requests.UserRequest;
 import org.sandeep.service.UserService;
@@ -35,7 +36,13 @@ public class UserController {
 
     @Mutation(value = "deleteUserById")
     @Description("Delete an existing user")
-    public String deleteUserById(@Source UUID id){
-        return userService.deleteUserById(id)? "Successfully deleted user":"Unable to delete user. Please try again.";
+    public String deleteUserById(@Source UUID id) {
+        return userService.deleteUserById(id) ? "Successfully deleted user" : "Unable to delete user. Please try again.";
+    }
+
+    @Mutation(value = "userLogin")
+    @Description("User login")
+    public LoginResponse userLogin(@Source UserRequest userRequest) {
+        return userService.userLogin(userRequest);
     }
 }

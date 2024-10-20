@@ -1,5 +1,6 @@
 package org.sandeep.service;
 
+import org.sandeep.model.LoginResponse;
 import org.sandeep.model.User;
 import org.sandeep.model.requests.UserRequest;
 
@@ -13,4 +14,6 @@ public interface UserService {
     User getUser(UserRequest userRequest) throws Exception;
 
     boolean updateUser(UserRequest userRequest);
+
+    LoginResponse userLogin(UserRequest userRequest);
 }
