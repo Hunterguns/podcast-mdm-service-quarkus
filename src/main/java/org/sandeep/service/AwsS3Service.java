@@ -85,6 +85,4 @@ public class AwsS3Service extends AwsS3CommonResource {
         ListObjectsResponse listObjectsResponse = s3Client.listObjects(buildListObjectsRequest(bucketName));
         return listObjectsResponse.contents().stream().map(t -> t.key()).toList();
     }
-
-
 }

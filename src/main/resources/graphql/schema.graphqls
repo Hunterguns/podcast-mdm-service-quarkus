@@ -1,5 +1,6 @@
 scalar URL
 scalar Date
+#scalar Upload
 
 type User{
     id: ID!
@@ -19,6 +20,9 @@ type Episode{
     podcastId: ID
     title: String
     description: String
+#    audioFile: Upload
+    fileName: String
+    mimeType: String
     audioFileUrl: String
     duration: String
     publishDate: String
@@ -105,6 +109,7 @@ input EpisodeRequest{
     podcastId: ID
     title: String
     description: String
+#    audioFile: Upload
     audioFileUrl: String
     duration: String
     publishDate: Date
